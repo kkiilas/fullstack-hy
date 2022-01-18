@@ -11,6 +11,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [message, setMessage] = useState(null)
+  const [isError, setIsError] = useState(false)
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -28,13 +29,15 @@ const App = () => {
             setMessage(`Updated ${person.name}`)
             setTimeout(() => {
               setMessage(null)
-            }, 2000)
+            }, 2500)
           })
           .catch(error => {
             setMessage(`Information of ${person.name} has already been removed from server`)
+            setIsError(true)
             setTimeout(() => {
               setMessage(null)
-            }, 2000)
+              setIsError(false)
+            }, 2500)
           })
       }
     } else {
@@ -44,14 +47,23 @@ const App = () => {
       }
       personService
         .create(personObject)
-        .then(returnedPerson => {
-          setPersons(persons.concat(returnedPerson))
+        .then(createdPerson => {
+           setPersons(persons.concat(createdPerson))
           setNewName('')
           setNewNumber('')
           setMessage(`Added ${personObject.name}`)
           setTimeout(() => {
             setMessage(null)
-          }, 2000)
+          }, 2500)
+        })
+        .catch(error => {
+          setMessage(error.response.data.error)
+          setIsError(true)
+          setTimeout(() => {
+            setMessage(null)
+            setIsError(false)
+          }, 4000)
+          console.log(error.response.data)
         })
     }
   }
@@ -61,17 +73,17 @@ const App = () => {
   const handleFilterChange = (event) => setFilter(event.target.value.toLowerCase())
 
   const handleDeleteClick = (event) => {
-    const id = Number(event.target.value)
+    const id = event.target.value
     const person = persons.find(p => p.id === id)
-    if (window.confirm(`Delete ${person.name}?`)) {
+    if (window.confirm(`Remove ${person.name} ?`)) {
       personService
         .remove(id)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
-          setMessage(`Deleted ${person.name}`)
+          setMessage(`Removed ${person.name}`)
           setTimeout(() => {
             setMessage(null)
-          }, 2000)
+          }, 2500)
         })
     }
   }
@@ -87,7 +99,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={message} />
+      <Notification message={message} isError={isError} />
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <h3>Add a new</h3>
       <PersonForm
