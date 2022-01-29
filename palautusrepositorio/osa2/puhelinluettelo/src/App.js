@@ -75,12 +75,12 @@ const App = () => {
   const handleDeleteClick = (event) => {
     const id = event.target.value
     const person = persons.find(p => p.id === id)
-    if (window.confirm(`Remove ${person.name} ?`)) {
+    if (window.confirm(`Delete ${person.name}?`)) {
       personService
         .remove(id)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
-          setMessage(`Removed ${person.name}`)
+          setMessage(`Deleted ${person.name}`)
           setTimeout(() => {
             setMessage(null)
           }, 2500)
