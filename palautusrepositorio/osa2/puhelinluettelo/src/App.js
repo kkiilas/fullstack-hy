@@ -63,7 +63,6 @@ const App = () => {
             setMessage(null)
             setIsError(false)
           }, 4000)
-          console.log(error.response.data)
         })
     }
   }

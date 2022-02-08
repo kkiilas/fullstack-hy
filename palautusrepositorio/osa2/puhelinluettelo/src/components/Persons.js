@@ -8,9 +8,9 @@ const Persons = ({ persons, filter, handleDeleteClick }) => {
 
   return (
     <div>
-      {personsToShow.map((person, i) =>
+      {personsToShow.map((person) =>
         <Person
-          key={i}
+          key={person.id}
           person={person}
           handleDeleteClick={handleDeleteClick}
         />
