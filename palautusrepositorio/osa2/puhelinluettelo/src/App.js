@@ -102,11 +102,11 @@ const App = () => {
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <h3>Add a new</h3>
       <PersonForm
-        newName={newName}
-        newNumber={newNumber}
         addPerson={addPerson}
         handleNameChange={handleNameChange}
         handleNumberChange={handleNumberChange}
+        newName={newName}
+        newNumber={newNumber}
       />
       <h3>Numbers</h3>
       <Persons
