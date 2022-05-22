@@ -10,19 +10,25 @@ const PersonForm = ({
   <div>
     <form onSubmit={addPerson}>
       <div>
-        name: <input
+        Name:
+        <input
           value={newName}
           onChange={handleNameChange}
+          className="bg-dark border-light text-light ms-1 mb-1"
         />
       </div>
       <div>
-        number: <input
+        Number:
+        <input
           value={newNumber}
           onChange={handleNumberChange}
+          className="bg-dark border-light text-light ms-1"
         />
       </div>
       <div>
-        <button type="submit">add</button>
+        <button className="btn btn-primary btn-outline-dark" type="submit">
+          Add
+        </button>
       </div>
     </form>
   </div>

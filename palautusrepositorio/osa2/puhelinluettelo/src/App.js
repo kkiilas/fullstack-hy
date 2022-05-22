@@ -15,15 +15,23 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    if (persons.map(person => person.name).includes(newName)) {
-      const person = persons.find(person => person.name === newName)
+    if (persons.map((person) => person.name).includes(newName)) {
+      const person = persons.find((person) => person.name === newName)
       const id = person.id
-      if (window.confirm(`${person.name} is already added to the phonebook, replace the old number with a new one?`)) {
+      if (
+        window.confirm(
+          `${person.name} is already added to the phonebook, replace the old number with a new one?`
+        )
+      ) {
         const changedPerson = { ...person, number: newNumber }
         personService
           .update(id, changedPerson)
-          .then(returnedPerson => {
-            setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+          .then((returnedPerson) => {
+            setPersons(
+              persons.map((person) =>
+                person.id !== id ? person : returnedPerson
+              )
+            )
             setNewName('')
             setNewNumber('')
             setMessage(`Updated ${person.name}`)
@@ -31,8 +39,11 @@ const App = () => {
               setMessage(null)
             }, 2500)
           })
-          .catch(error => {
-            setMessage(`Information of ${person.name} has already been removed from server`)
+          // eslint-disable-next-line no-unused-vars
+          .catch((error) => {
+            setMessage(
+              `Information of ${person.name} has already been removed from server`
+            )
             setIsError(true)
             setTimeout(() => {
               setMessage(null)
@@ -47,8 +58,8 @@ const App = () => {
       }
       personService
         .create(personObject)
-        .then(createdPerson => {
-           setPersons(persons.concat(createdPerson))
+        .then((createdPerson) => {
+          setPersons(persons.concat(createdPerson))
           setNewName('')
           setNewNumber('')
           setMessage(`Added ${personObject.name}`)
@@ -56,7 +67,7 @@ const App = () => {
             setMessage(null)
           }, 2500)
         })
-        .catch(error => {
+        .catch((error) => {
           setMessage(error.response.data.error)
           setIsError(true)
           setTimeout(() => {
@@ -69,34 +80,31 @@ const App = () => {
 
   const handleNameChange = (event) => setNewName(event.target.value)
   const handleNumberChange = (event) => setNewNumber(event.target.value)
-  const handleFilterChange = (event) => setFilter(event.target.value.toLowerCase())
+  const handleFilterChange = (event) =>
+    setFilter(event.target.value.toLowerCase())
 
   const handleDeleteClick = (event) => {
     const id = event.target.value
-    const person = persons.find(p => p.id === id)
+    const person = persons.find((p) => p.id === id)
     if (window.confirm(`Delete ${person.name}?`)) {
-      personService
-        .remove(id)
-        .then(() => {
-          setPersons(persons.filter(person => person.id !== id))
-          setMessage(`Deleted ${person.name}`)
-          setTimeout(() => {
-            setMessage(null)
-          }, 2500)
-        })
+      personService.remove(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id))
+        setMessage(`Deleted ${person.name}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 2500)
+      })
     }
   }
 
   useEffect(() => {
-    personService
-      .getAll()
-      .then(initialPersons => {
-        setPersons(initialPersons)
-      })
+    personService.getAll().then((initialPersons) => {
+      setPersons(initialPersons)
+    })
   }, [])
 
   return (
-    <div>
+    <div className="container text-light">
       <h2>Phonebook</h2>
       <Notification message={message} isError={isError} />
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
