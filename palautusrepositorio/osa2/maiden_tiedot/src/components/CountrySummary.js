@@ -3,11 +3,16 @@ import Capitals from './Capitals'
 import Languages from './Languages'
 import Weather from './Weather'
 
-const CountrySummary = ({ country, nonsingularCapital, handleNonsingularCapitalClick, weather }) => {
-
-  const weatherLocation = (country.capital === undefined)
-    ? country.name.common
-    : country.capital.length === 1 || nonsingularCapital === -1
+const CountrySummary = ({
+  country,
+  nonsingularCapital,
+  handleNonsingularCapitalClick,
+  weather
+}) => {
+  const weatherLocation =
+    country.capital === undefined
+      ? country.name.common
+      : country.capital.length === 1 || nonsingularCapital === -1
       ? country.capital[0]
       : country.capital[nonsingularCapital]
 
@@ -16,10 +21,9 @@ const CountrySummary = ({ country, nonsingularCapital, handleNonsingularCapitalC
       <h2>{country.name.common}</h2>
       <Capitals
         capitals={country.capital}
-        handleNonsingularCapitalClick={handleNonsingularCapitalClick} />
-      <div>
-        population {country.population}
-      </div>
+        handleNonsingularCapitalClick={handleNonsingularCapitalClick}
+      />
+      <div>population {country.population}</div>
       <h3>Languages</h3>
       <Languages languages={Object.values(country.languages)} />
       <img src={country.flags.png} alt="flag" height="85px" width="130" />
@@ -28,7 +32,8 @@ const CountrySummary = ({ country, nonsingularCapital, handleNonsingularCapitalC
         temperature={weather.temperature}
         weather_icon={weather.weather_icon}
         wind_speed={weather.wind_speed}
-        wind_dir={weather.wind_dir} />
+        wind_dir={weather.wind_dir}
+      />
     </div>
   )
 }

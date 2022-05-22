@@ -104,7 +104,7 @@ const App = () => {
   }, [])
 
   return (
-    <div className="container text-light">
+    <div className="container">
       <h2>Phonebook</h2>
       <Notification message={message} isError={isError} />
       <Filter filter={filter} handleFilterChange={handleFilterChange} />

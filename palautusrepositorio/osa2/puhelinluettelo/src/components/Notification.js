@@ -5,18 +5,10 @@ const Notification = ({ message, isError }) => {
     return null
   }
   if (isError) {
-    return (
-      <div className="errorMessage">
-        {message}
-      </div>
-    )
+    return <div className="errorMessage">{message}</div>
   }
 
-  return (
-    <div className="message">
-      {message}
-    </div>
-  )
+  return <div className="message">{message}</div>
 }
 
 export default Notification

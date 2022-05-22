@@ -25,7 +25,7 @@ const App = () => {
     }
     axios
       .get('http://api.weatherstack.com/current', { params })
-      .then(response => {
+      .then((response) => {
         const apiResponse = response.data.current
         const newWeather = {
           temperature: apiResponse.temperature,
@@ -37,18 +37,19 @@ const App = () => {
       })
   }
 
-  const getWeatherLocation = (country) => country.capital === undefined
-    ? `${country.latlng[0]},${country.latlng[1]}`
-    : country.capital.length === 1 || nonsingularCapital < 0
+  const getWeatherLocation = (country) =>
+    country.capital === undefined
+      ? `${country.latlng[0]},${country.latlng[1]}`
+      : country.capital.length === 1 || nonsingularCapital < 0
       ? country.capital[0]
       : country.capital[nonsingularCapital]
 
   const handleFilterChange = (event) => {
     setShowCountries(true)
     setFilter(event.target.value)
-    const filteredCountries = countries
-      .filter(({ name }) =>
-        name.common.toLowerCase().includes(event.target.value.toLowerCase()))
+    const filteredCountries = countries.filter(({ name }) =>
+      name.common.toLowerCase().includes(event.target.value.toLowerCase())
+    )
     if (filteredCountries.length === 1) {
       const country = filteredCountries[0]
       const weatherLocation = getWeatherLocation(country)
@@ -59,30 +60,33 @@ const App = () => {
   const handleShowClick = (event) => {
     setShowCountries(false)
     setFilter(event.target.value)
-    const country = countries.find(({ name }) => name.common === event.target.value)
+    const country = countries.find(
+      ({ name }) => name.common === event.target.value
+    )
     const location = getWeatherLocation(country)
     getWeather(location)
   }
 
   const handleNonsingularCapitalClick = (event) => {
     const i = event.target.value
-    const country = countries
-      .find(country => country.capital !== undefined && country.capital.length > 1
-        && country.name.common.toLowerCase().includes(filter.toLowerCase()))
+    const country = countries.find(
+      (country) =>
+        country.capital !== undefined &&
+        country.capital.length > 1 &&
+        country.name.common.toLowerCase().includes(filter.toLowerCase())
+    )
     getWeather(country.capital[i])
     setNonsingularCapital(i)
   }
 
   useEffect(() => {
-    axios
-      .get('https://restcountries.com/v3.1/all')
-      .then(response => {
-        setCountries(response.data)
-      })
+    axios.get('https://restcountries.com/v3.1/all').then((response) => {
+      setCountries(response.data)
+    })
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <Countries
         countries={countries}

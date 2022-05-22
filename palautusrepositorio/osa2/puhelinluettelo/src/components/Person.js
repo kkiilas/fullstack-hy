@@ -7,7 +7,7 @@ const Person = ({ person, handleDeleteClick }) => {
       <button
         value={person.id}
         onClick={handleDeleteClick}
-        className="btn btn-outline-primary ms-1 mb-1"
+        className="btn btn-outline-warning ms-1 mb-1"
       >
         Delete
       </button>

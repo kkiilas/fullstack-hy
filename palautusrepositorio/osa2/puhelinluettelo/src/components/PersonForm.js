@@ -26,7 +26,7 @@ const PersonForm = ({
         />
       </div>
       <div>
-        <button className="btn btn-primary btn-outline-dark" type="submit">
+        <button className="btn btn-warning" type="submit">
           Add
         </button>
       </div>

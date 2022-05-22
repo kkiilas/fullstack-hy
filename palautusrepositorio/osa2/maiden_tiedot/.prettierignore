@@ -1,7 +1,5 @@
 node_modules
 build
-db-1641916974289.json
-db.json
 .eslintrc.js
 .eslintignore
 .gitignore
