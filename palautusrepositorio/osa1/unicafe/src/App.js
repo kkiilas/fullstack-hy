@@ -66,19 +66,21 @@ const App = () => {
   }
 
   return (
-    <div className="container bg-secondary">
-      <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
-        <div>
-          <Header text="give feedback" />
-          <Button handleClick={handleGoodClick} text="good" color="success" />
-          <Button
-            handleClick={handleNeutralClick}
-            text="neutral"
-            color="warning"
-          />
-          <Button handleClick={handleBadClick} text="bad" color="danger" />
-          <Header text="statistics" />
-          <Statistics good={good} neutral={neutral} bad={bad} />
+    <div className="container bg-light">
+      <div className="container bg-secondary">
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
+          <div>
+            <Header text="give feedback" />
+            <Button handleClick={handleGoodClick} text="good" color="success" />
+            <Button
+              handleClick={handleNeutralClick}
+              text="neutral"
+              color="warning"
+            />
+            <Button handleClick={handleBadClick} text="bad" color="danger" />
+            <Header text="statistics" />
+            <Statistics good={good} neutral={neutral} bad={bad} />
+          </div>
         </div>
       </div>
     </div>

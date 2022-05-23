@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 
-const Header = (props) => <div><h1>{props.text}</h1></div>
+const Header = (props) => (
+  <div>
+    <h1>{props.text}</h1>
+  </div>
+)
 
 const Display = (props) => (
   <div>
     <Header text={props.header} />
-    <div>
-      {props.anecdote}
-    </div>
-    <div>
-      has {props.votes} votes
-    </div>
+    <div>{props.anecdote}</div>
+    <div>has {props.votes} votes</div>
   </div>
 )
 
 const Button = (props) => (
-  <button onClick={props.handleClick}>
+  <button onClick={props.handleClick} className="btn btn-outline-warning me-1">
     {props.text}
   </button>
 )
@@ -23,7 +23,9 @@ const Button = (props) => (
 const App = (props) => {
   const length = props.anecdotes.length
   const [selected, setSelected] = useState(0)
-  const [allVotes, setAll] = useState(Array.apply(null, new Array(length)).map(Number.prototype.valueOf, 0))
+  const [allVotes, setAll] = useState(
+    Array.apply(null, new Array(length)).map(Number.prototype.valueOf, 0)
+  )
 
   const handleVoteClick = () => {
     const copy = [...allVotes]
@@ -50,13 +52,27 @@ const App = (props) => {
   const positionOfMax = indicesOfMax[random]
 
   return (
-    <div>
-      <Display header='Anecdote of the day' anecdote={props.anecdotes[selected]} votes={allVotes[selected]} />
-      <div>
-        <Button handleClick={handleVoteClick} text='vote' />
-        <Button handleClick={handleNextClick} text='next anecdote' />
+    <div className="container bg-warning">
+      <div className="container bg-secondary">
+        <div className="d-flex align-items-center vh-100 bg-dark p-5">
+          <div className="d-flex flex-column">
+            <Display
+              header="Anecdote of the day"
+              anecdote={props.anecdotes[selected]}
+              votes={allVotes[selected]}
+            />
+            <div>
+              <Button handleClick={handleVoteClick} text="vote" />
+              <Button handleClick={handleNextClick} text="next anecdote" />
+            </div>
+            <Display
+              header="Anecdote with most votes"
+              anecdote={props.anecdotes[positionOfMax]}
+              votes={allVotes[positionOfMax]}
+            />
+          </div>
+        </div>
       </div>
-      <Display header='Anecdote with most votes' anecdote={props.anecdotes[positionOfMax]} votes={allVotes[positionOfMax]} />
     </div>
   )
 }

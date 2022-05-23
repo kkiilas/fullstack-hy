@@ -1,4 +1,5 @@
-import ReactDOM from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
 
 const anecdotes = [
@@ -10,7 +11,6 @@ const anecdotes = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
-ReactDOM.render(
-  <App anecdotes={anecdotes} />, 
-  document.getElementById('root')
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <App anecdotes={anecdotes} />
 )
