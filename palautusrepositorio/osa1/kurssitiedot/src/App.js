@@ -59,7 +59,7 @@ const App = () => {
   return (
     <div className="container bg-primary">
       <div className="container bg-secondary">
-        <div className="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark">
+        <div className="d-flex align-items-center justify-content-center vh-100 bg-dark">
           <div>
             <Header course={course.name} />
             <Content parts={course.parts} />

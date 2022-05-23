@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 
-const Header = (props) => <div><h1>{props.text}</h1></div>
+const Header = (props) => (
+  <div>
+    <h1>{props.text}</h1>
+  </div>
+)
 
 const Button = (props) => (
-  <button onClick={props.handleClick}>
+  <button className={`btn btn-${props.color} me-2`} onClick={props.handleClick}>
     {props.text}
   </button>
 )
@@ -22,14 +26,10 @@ const StatisticLine = (props) => {
 const Statistics = (props) => {
   const all = props.good + props.neutral + props.bad
   const average = (props.good - props.bad) / all
-  const positive = props.good / all * 100
+  const positive = (props.good / all) * 100
 
   if (all === 0) {
-    return (
-      <div>
-        No feedback given
-      </div>
-    )
+    return <div>No feedback given</div>
   }
 
   return (
@@ -66,13 +66,21 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Header text='give feedback' />
-      <Button handleClick={handleGoodClick} text="good" />
-      <Button handleClick={handleNeutralClick} text="neutral" />
-      <Button handleClick={handleBadClick} text="bad" />
-      <Header text='statistics' />
-      <Statistics good={good} neutral={neutral} bad={bad} />
+    <div className="container bg-secondary">
+      <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
+        <div>
+          <Header text="give feedback" />
+          <Button handleClick={handleGoodClick} text="good" color="success" />
+          <Button
+            handleClick={handleNeutralClick}
+            text="neutral"
+            color="warning"
+          />
+          <Button handleClick={handleBadClick} text="bad" color="danger" />
+          <Header text="statistics" />
+          <Statistics good={good} neutral={neutral} bad={bad} />
+        </div>
+      </div>
     </div>
   )
 }
