@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import Course from './components/Course'
 
@@ -48,10 +49,10 @@ const App = () => {
   ]
 
   return (
-    <div>
-      {courses.map((course, i) =>
+    <div className="container">
+      {courses.map((course, i) => (
         <Course key={course.id} course={course} />
-      )}
+      ))}
     </div>
   )
 }

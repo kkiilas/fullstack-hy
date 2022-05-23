@@ -6,5 +6,4 @@ const Header = ({ course }) => (
   </div>
 )
 
-
 export default Header

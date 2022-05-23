@@ -6,7 +6,7 @@ const Filter = ({ filter, handleFilterChange }) => (
     <input
       value={filter}
       onChange={handleFilterChange}
-      className="bg-dark border-light text-light ms-1"
+      className="bg-dark border-warning text-light ms-1"
     />
   </div>
 )

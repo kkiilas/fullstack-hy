@@ -14,7 +14,7 @@ const PersonForm = ({
         <input
           value={newName}
           onChange={handleNameChange}
-          className="bg-dark border-light text-light ms-1 mb-1"
+          className="bg-dark border-warning text-light ms-1 mb-1"
         />
       </div>
       <div>
@@ -22,7 +22,7 @@ const PersonForm = ({
         <input
           value={newNumber}
           onChange={handleNumberChange}
-          className="bg-dark border-light text-light ms-1"
+          className="bg-dark border-warning text-light ms-1"
         />
       </div>
       <div>
