@@ -49,10 +49,14 @@ const App = () => {
   ]
 
   return (
-    <div className="container">
-      {courses.map((course, i) => (
-        <Course key={course.id} course={course} />
-      ))}
+    <div className="container bg-danger">
+      <div className="d-flex justify-content-center vh-100 bg-dark">
+        <div className="d-grid">
+          {courses.map((course, i) => (
+            <Course key={course.id} course={course} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
