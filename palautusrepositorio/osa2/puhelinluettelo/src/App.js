@@ -39,11 +39,12 @@ const App = () => {
               setMessage(null)
             }, 2500)
           })
-          // eslint-disable-next-line no-unused-vars
           .catch((error) => {
-            setMessage(
-              `Information of ${person.name} has already been removed from server`
-            )
+            error.response.status === 500
+              ? setMessage(
+                  `Information of ${person.name} has already been removed from server`
+                )
+              : setMessage(error.response.data.error)
             setIsError(true)
             setTimeout(() => {
               setMessage(null)
@@ -104,24 +105,34 @@ const App = () => {
   }, [])
 
   return (
-    <div className="container">
-      <h2>Phonebook</h2>
-      <Notification message={message} isError={isError} />
-      <Filter filter={filter} handleFilterChange={handleFilterChange} />
-      <h3>Add a new</h3>
-      <PersonForm
-        addPerson={addPerson}
-        handleNameChange={handleNameChange}
-        handleNumberChange={handleNumberChange}
-        newName={newName}
-        newNumber={newNumber}
-      />
-      <h3>Numbers</h3>
-      <Persons
-        persons={persons}
-        filter={filter}
-        handleDeleteClick={handleDeleteClick}
-      />
+    <div className="container bg-warning bg-gradient">
+      <div className="d-flex vh-100 bg-dark bg-gradient p-5">
+        <div className="d-grid vw-100">
+          <div>
+            <h2>Phonebook</h2>
+            <Notification message={message} isError={isError} />
+            <Filter filter={filter} handleFilterChange={handleFilterChange} />
+          </div>
+          <div>
+            <h3>Add a new</h3>
+            <PersonForm
+              addPerson={addPerson}
+              handleNameChange={handleNameChange}
+              handleNumberChange={handleNumberChange}
+              newName={newName}
+              newNumber={newNumber}
+            />
+          </div>
+          <div>
+            <h3>Numbers</h3>
+            <Persons
+              persons={persons}
+              filter={filter}
+              handleDeleteClick={handleDeleteClick}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

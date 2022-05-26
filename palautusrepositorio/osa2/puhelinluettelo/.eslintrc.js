@@ -18,11 +18,6 @@ module.exports = {
   },
   "plugins": ["react"],
   "rules": {
-    "indent": [
-      "error",
-      2,
-      { "flatTernaryExpressions": true }
-    ],
     "linebreak-style": [
       "error",
       "windows"
