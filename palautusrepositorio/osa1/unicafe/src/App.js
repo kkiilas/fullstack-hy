@@ -29,7 +29,7 @@ const Statistics = (props) => {
   const positive = (props.good / all) * 100
 
   if (all === 0) {
-    return <div>No feedback given</div>
+    return <div>No feedback given.</div>
   }
 
   return (
@@ -66,11 +66,11 @@ const App = () => {
   }
 
   return (
-    <div className="container bg-light">
-      <div className="container bg-secondary">
-        <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
-          <div>
-            <Header text="give feedback" />
+    <div className="container bg-light bg-gradient">
+      <div className="container bg-secondary bg-gradient">
+        <div className="d-flex justify-content-center bg-dark bg-gradient min-vh-100">
+          <div className="p-5 bg-dark mt-5">
+            <Header text="Give feedback" />
             <Button handleClick={handleGoodClick} text="good" color="success" />
             <Button
               handleClick={handleNeutralClick}
@@ -78,7 +78,7 @@ const App = () => {
               color="warning"
             />
             <Button handleClick={handleBadClick} text="bad" color="danger" />
-            <Header text="statistics" />
+            <Header text="Statistics" />
             <Statistics good={good} neutral={neutral} bad={bad} />
           </div>
         </div>

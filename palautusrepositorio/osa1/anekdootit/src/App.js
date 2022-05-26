@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Header = (props) => (
   <div>
-    <h1>{props.text}</h1>
+    <h1 className="text-warning">{props.text}</h1>
   </div>
 )
 
@@ -15,7 +15,7 @@ const Display = (props) => (
 )
 
 const Button = (props) => (
-  <button onClick={props.handleClick} className="btn btn-outline-warning me-1">
+  <button onClick={props.handleClick} className="btn btn-outline-warning me-2">
     {props.text}
   </button>
 )
@@ -52,10 +52,10 @@ const App = (props) => {
   const positionOfMax = indicesOfMax[random]
 
   return (
-    <div className="container bg-warning">
-      <div className="container bg-secondary">
-        <div className="d-flex align-items-center vh-100 bg-dark p-5">
-          <div className="d-flex flex-column">
+    <div className="container bg-warning bg-gradient">
+      <div className="container bg-secondary bg-gradient">
+        <div className="d-flex bg-dark bg-gradient p-5 min-vh-100">
+          <div className="d-flex flex-column p-5 m-5">
             <Display
               header="Anecdote of the day"
               anecdote={props.anecdotes[selected]}

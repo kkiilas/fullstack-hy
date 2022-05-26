@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Header = (props) => {
-  return <h1>{props.course}</h1>
+  return <h1 className="text-info">{props.course}</h1>
 }
 
 const Part = (props) => {
@@ -57,9 +57,9 @@ const App = () => {
   }
 
   return (
-    <div className="container bg-primary">
-      <div className="container bg-secondary">
-        <div className="d-flex align-items-center justify-content-center vh-100 bg-dark">
+    <div className="container bg-info bg-gradient">
+      <div className="container bg-primary bg-gradient">
+        <div className="d-flex align-items-center justify-content-center bg-dark bg-gradient min-vh-100">
           <div>
             <Header course={course.name} />
             <Content parts={course.parts} />

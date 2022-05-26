@@ -106,8 +106,8 @@ const App = () => {
 
   return (
     <div className="container bg-warning bg-gradient">
-      <div className="d-flex vh-100 bg-dark bg-gradient p-5">
-        <div className="d-grid vw-100">
+      <div className="d-flex bg-dark bg-gradient p-5 min-vh-100">
+        <div className="d-grid mw-100">
           <div>
             <h2>Phonebook</h2>
             <Notification message={message} isError={isError} />

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = ({ course }) => (
   <div>
-    <h1>{course}</h1>
+    <h1 className="text-warning">{course}</h1>
   </div>
 )
 

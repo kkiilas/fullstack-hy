@@ -86,17 +86,23 @@ const App = () => {
   }, [])
 
   return (
-    <div className="container">
-      <Filter filter={filter} handleFilterChange={handleFilterChange} />
-      <Countries
-        countries={countries}
-        filter={filter}
-        showCountries={showCountries}
-        nonsingularCapital={nonsingularCapital}
-        handleShowClick={handleShowClick}
-        handleNonsingularCapitalClick={handleNonsingularCapitalClick}
-        weather={weather}
-      />
+    <div className="container bg-success bg-gradient">
+      <div className="container bg-dark bg-gradient">
+        <div className="d-flex justify-content-center p-5 bg-dark min-vh-100">
+          <div>
+            <Filter filter={filter} handleFilterChange={handleFilterChange} />
+            <Countries
+              countries={countries}
+              filter={filter}
+              showCountries={showCountries}
+              nonsingularCapital={nonsingularCapital}
+              handleShowClick={handleShowClick}
+              handleNonsingularCapitalClick={handleNonsingularCapitalClick}
+              weather={weather}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

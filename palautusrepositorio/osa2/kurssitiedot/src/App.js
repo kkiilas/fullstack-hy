@@ -49,12 +49,14 @@ const App = () => {
   ]
 
   return (
-    <div className="container bg-danger">
-      <div className="d-flex justify-content-center vh-100 bg-dark">
-        <div className="d-grid">
-          {courses.map((course, i) => (
-            <Course key={course.id} course={course} />
-          ))}
+    <div className="container bg-warning bg-gradient">
+      <div className="container bg-danger bg-gradient">
+        <div className="d-flex justify-content-center p-5 bg-dark bg-gradient min-vh-100">
+          <div className="d-grid">
+            {courses.map((course, i) => (
+              <Course key={course.id} course={course} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ const Capital = ({ i, capital, handleNonsingularCapitalClick }) => (
     <button
       value={i}
       onClick={handleNonsingularCapitalClick}
-      className="btn btn-success ms-1 mb-1"
+      className="btn btn-success ms-1 mb-2"
     >
       show weather
     </button>
